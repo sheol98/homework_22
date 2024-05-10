@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №3</title>
+    <style>
+			div{
+				font-size: 24px;
+			}
+		</style>
+  </head>
+  <body>
+    <header>
+      <h3>
+        Задача 3. Визначити скільки залишилось до кінця робочого дня (до 17.00)
+      </h3>
+    </header>
+    <main>
+      <div class="res"></div>
+    </main>
+    <script>
+      function getEndWorkDay(hours, minutes) {
+        let now = new Date();
+        let finishWorkDay = new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate(),
+          hours,
+          minutes,
+          0
+        );
+        let remainsHours = Math.floor((finishWorkDay - now) / (1000 * 60 * 60));
+        let remainsMinutes = Math.floor(
+          ((finishWorkDay - now) % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        let divRes = document.querySelector(".res");
+        if (now.getHours() >= hours)
+          divRes.innerText = "Робочий день закінчився";
+        else
+          divRes.innerText = `До кінця робочого дня  ${remainsHours} годин, ${remainsMinutes} хвилин`;
+      }
+      getEndWorkDay(17, 0);
+    </script>
+  </body>
+</html>

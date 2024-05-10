@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №4</title>
+    <style></style>
+  </head>
+  <body>
+    <header>
+      <h3>
+        Задача 5. При заході на сайт вітати користувача або відображати
+        повідомлення про те, скільки хвилин залишилось до початку робочого дня
+        (початок о 8.00).
+      </h3>
+    </header>
+    <main></main>
+    <script>
+      function greetingUser() {
+        alert("Привіт!");
+      }
+      function getMinutesToWorkDay() {
+        let now = new Date();
+        let startWorkDay = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate() + 1,
+          8,
+          0,
+          0
+        );
+        console.log(startWorkDay);
+        let minutesToWork = Math.floor((startWorkDay - now) / (1000 * 60));
+        alert(`До початку робочого дня ${minutesToWork} хвилин`);
+      }
+
+      if (new Date().getHours() < 8) greetingUser();
+      else getMinutesToWorkDay();
+    </script>
+  </body>
+</html>

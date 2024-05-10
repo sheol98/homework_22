@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Задача №1</title>
+  </head>
+  <body>
+    <header>
+      <h3>
+        Задача 1. Виводити на екран скільки хвилин користувач вже на сайті
+      </h3>
+    </header>
+    <main></main>
+    <script>
+      class Clock {
+        constructor() {
+          this.render();
+          this.nowTime = new Date();
+          this.timoOnSite();
+        }
+        timoOnSite() {
+          let difference = Math.floor((new Date() - this.nowTime) / 1000);
+          let minutes = Math.floor(difference / 60);
+          if (difference <= 59) {
+            this.divTime.innerText = `Ви на сайті ${minutes} хвилин(и), ${difference} секунд(и)`;
+          } else {
+            this.divTime.innerText = `Ви на сайті ${minutes} хвилин(и), ${
+              difference % 60
+            } секунд(и)`;
+          }
+        }
+        render() {
+          this.divTime = document.createElement("div");
+          this.divTime.innerText = "Ви на сайті 0 хвилин(и), 0 секунд(и)";
+          document.querySelector("main").append(this.divTime);
+          return this.divTime;
+        }
+      }
+
+      let time = new Clock();
+      setInterval(() => {
+        time.timoOnSite();
+      }, 100);
+    </script>
+  </body>
+</html>
